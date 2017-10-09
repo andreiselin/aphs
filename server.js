@@ -47,6 +47,13 @@ app.get('/script.js',                 function(req,res){ res.sendFile(path.resol
         ///////////////////
 
 
+		
+app.get("/createindex/:name", function(req, res) {
+	res.send(req.params);
+});
+
+
+
 
 
 
