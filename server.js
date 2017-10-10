@@ -49,7 +49,11 @@ app.get('/script.js',                 function(req,res){ res.sendFile(path.resol
 
 		
 app.get("/createindex/:name", function(req, res) {
-	res.send(req.params);
+	let data = req.params;
+	
+	aphs.addJSON(data['name']);
+	res.writeHead(200, { 'Content-Type': 'application/json' });
+	res.end();
 });
 
 

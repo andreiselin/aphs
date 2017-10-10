@@ -30,6 +30,16 @@ function getJSON() {
 
 
 
+function addJSON(data) {
+	let defaultIndex = {"name": data, "position": {"left": 0, "top": 0}, "blocks": [{"name": "sourceBlockExample", "top": 170, "left": 148, "width": 361, "height": 64}, {"name": "targetBlockExample", "top": 197, "left": 587, "width": 532, "height": 64}], "connections": [{"from": {"block": 0, "line": 2}, "to": {"block": 1}}], "contents": {} };
+	let indexes = getJSON();
+		
+	indexes['contexts'].push(defaultIndex);
+	saveJSON(indexes);
+}
+
+
+
 function saveJSON(json) {
     fs.writeFileSync(JSONPath, JSON.stringify(json), "utf8");
 }
@@ -138,6 +148,7 @@ var getFileContent = {
 
 
 
+
         ////////////////
         //            //
         //   Export   //
@@ -154,5 +165,6 @@ module.exports = {
     getBlockContent:getBlockContent,
     parseFile:parseFile,
     getJSON:getJSON,
-    saveJSON:saveJSON
+    saveJSON:saveJSON,
+	addJSON:addJSON
 };
