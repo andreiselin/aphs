@@ -4,6 +4,8 @@ var app = express();
 var aphs = require("./aphs");
 const path = require('path');
 
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -47,6 +49,22 @@ app.get('/script.js',                 function(req,res){ res.sendFile(path.resol
         ///////////////////
 
 
+		
+app.get("/createindex/:name", function(req, res) { //new Index get
+	let data = req.params;
+	
+	aphs.addJSON(data['name']);
+	res.writeHead(200, { 'Content-Type': 'application/json' });
+	res.end();
+});
+
+
+
+app.post("/createindex", function(req, res) { // new Index post {"name": "name"}
+	aphs.addJSON(req.body.name);
+	res.writeHead(200, { 'Content-Type': 'application/json' });
+	res.end();
+});
 
 
 
